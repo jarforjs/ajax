@@ -55,9 +55,52 @@
     <div>
         包含input的type为hidden的div <input type="hidden" size="8">
     </div>
+    <span id="mover">正在执行动画的span元素</span>
 </body>
 </html>
 <script>
+    //基本选择器示例
     //$('#one').css('background','#bbffaa');
-    $('.mini').css('background','#bbffaa');
+    // $('.mini').css('background','#bbffaa');
+    // $('div').css('background','#bbffaa');
+    // $('*').css('background','#bbffaa');
+    //改变所有的<span>元素和id为two的元素背景色
+    // $('span,#two').css('background','#bbffaa');
+    
+    //层次选择器示例
+    //改变body内所有div的背景色
+    // $('body div').css('background','#bbffaa');
+    //改变body内子div的背景色
+    // $('body > div').css('background','#bbffaa');
+    //改变class为one的下一个div的背景色
+    // $('.one + div').css('background','#bbffaa');
+    //改变id为two的元素后面所有同辈div兄弟元素的背景色
+    // $('#two ~ div').css('background','#bbffaa');
+    //$('#two').nextAll('div').css('background','#bbffaa');//同上
+    // $('#two').siblings('div').css('background','#bbffaa');//选取#two所有同辈div元素,无论前后位置
+
+    // $('div:gt(3)').css('background','#bbffaa');
+    // $('div:lt(3)').css('background','red');
+    // console.log($('div'));
+
+    //内容过滤器选择器
+    // $('div:contains(di)').css('background','#bbffaa');
+    // $('div:empty').css('background','#bbffaa');
+    // $('div:has(".mini")').css('background','#bbffaa');
+    //改变含有子元素(包括文本元素)的div元素背景色
+    // $('div:parent').css('background','#bbffaa');
+
+    //可见性过滤选择器
+    // $('div:hidden').show(3000);
+    // $('div:visible').css('background','#ff6500')
+
+    //属性过滤选择器
+    // $('div[title=test]').css('background','#bfa');
+    // $('div[title]').css('background','#bfa');
+
+    //子元素过滤选择器
+    //改变每个class为one的div父元素下的第二个子元素的背景色
+    // $('div.one:nth-child(2)').css('background','#bfa');
+    //如果class为one的div父元素下只有一个子元素,那么则改变这个子元素的背景色
+    $('div.one :only-child').css('background','#bfa');
 </script>

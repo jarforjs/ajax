@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+    <script src="../js/jquery.js"></script>
+<body>
+    <p>测试1</p>
+    <p>测试2</p>
+
+    <table id="tb">
+        <tbody>
+            <tr><td>第1行</td><td>第1行</td></tr>
+            <tr><td>第2行</td><td>第2行</td></tr>
+            <tr><td>第3行</td><td>第3行</td></tr>
+            <tr><td>第4行</td><td>第4行</td></tr>
+            <tr><td>第5行</td><td>第5行</td></tr>
+        </tbody>
+    </table>
+
+
+    <input type="checkbox" value="1" name="check" checked>
+    <input type="checkbox" value="2" name="check">
+    <input type="checkbox" value="3" name="check" checked>
+    <input type="button" value="你选中的个数" id="btn">
+
+</body>
+</html>
+<script>
+    $('p').click(function(){
+        console.log($(this).index())
+    })
+
+    $('#tb tbody tr:odd').css('background','#888');
+
+    $('#btn').click(function(){
+        var length=$('input[name="check"]:checked').length;
+        console.log(length)
+    })
+</script>
