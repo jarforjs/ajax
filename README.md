@@ -1,3 +1,5 @@
+https://jarforjs.github.io/ajax/
+
 ## jQuery对象转成DOM对象
 > jQuery提供两种方法将一个jQuery对象转换成DOM对象,即[index]和get(index)
 
