@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+    <script src="../js/jquery.js"></script>
+<body>
+    <input type="checkbox" id="cr" /><label for="cr">我已经阅读了上面的制度</label>
+</body>
+</html>
+<script>
+    // $(document).ready(function(){//等待dom元素加载
+    //     var $cr=$("#cr");//jquery对象
+    //     var cr=$cr[0];//dom对象,或者$cr.get(0)
+    //     $cr.click(function(){
+    //         if(cr.checked){//dom方式判断
+    //             console.log("感谢你的支持,你可以继续操作!");
+    //         }
+    //     })
+    // })
+
+
+    $(document).ready(function(){
+        var $cr=$('#cr');
+        $cr.click(function(){
+            if($cr.is(':checked')){
+                console.log('感谢你的支持,你可以继续操作!');
+            }
+        })
+    })
+</script>

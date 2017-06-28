@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+    <script src="../js/jquery.js"></script>
+<body>
+    <p>测试1</p>
+    <p>测试2</p>
+
+    <table id="tb">
+        <tbody>
+            <tr><td>第1行</td><td>第1行</td></tr>
+            <tr><td>第2行</td><td>第2行</td></tr>
+            <tr><td>第3行</td><td>第3行</td></tr>
+            <tr><td>第4行</td><td>第4行</td></tr>
+            <tr><td>第5行</td><td>第5行</td></tr>
+        </tbody>
+    </table>
+
+
+    <input type="checkbox" value="1" name="check" checked>
+    <input type="checkbox" value="2" name="check">
+    <input type="checkbox" value="3" name="check" checked>
+    <input type="button" value="你选中的个数" id="btn">
+</body>
+</html>
+<script>
+    var ps = document.getElementsByTagName('p');
+    for (var i = 0; i < ps.length; i++) {
+        // ps[i].onclick = function (i) {
+        //     return function(){
+        //         console.log('haha', i);
+        //     }
+        // }(i)
+
+
+        // (function(i){
+        //     ps[i].onclick = function () {
+        //         console.log('haha', i);
+        //     }
+        // })(i)
+        ps[i].self=i;
+        ps[i].onclick = function () {
+            console.log('haha', this.self);
+        }
+    }
+
+    var table=document.getElementById('tb');
+    var tbody=table.getElementsByTagName('tbody')[0];
+    var trs=tbody.getElementsByTagName('tr');
+
+    for(var i=0;i<trs.length;i++){
+        if(i%2){
+            trs[i].style.backgroundColor='#888';
+        }
+    }
+
+    var　btn=document.getElementById('btn');
+    btn.onclick=function(){
+        var arr=new Array();
+        var checkboxs=document.getElementsByName('check');
+        for(var i=0;i<checkboxs.length;i++){
+            if(checkboxs[i].checked){
+                arr.push(checkboxs[i].value);
+            }
+        }
+        console.log(arr);
+        console.log('选中的个数为'+arr.length);
+    }
+</script>

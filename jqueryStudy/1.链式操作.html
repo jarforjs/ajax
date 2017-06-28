@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #menu {width: 300px;user-select:none}
+        .has_children{background: #555;color: #fff;cursor: pointer}
+        .highlight{color: #fff;background: green}
+        div{padding: 0;margin: 10px 0}
+        div a{background: #888;display: none;float: left;width: 300px}
+    </style>
+</head>
+    <script src="../js/jquery.js"></script>
+<body>
+    <div id="menu">
+        <div class="has_children">
+            <span>第一章-认识jquery</span>
+            <a href="">1.1该插件已经改名为Emmet</a>
+            <a href="">1.2该插件已经改名为Emmet</a>
+            <a href="">1.3该插件已经改名为Emmet</a>
+            <a href="">1.4该插件已经改名为Emmet</a>
+        </div>
+        <div class="has_children">
+            <span>第二章-认识jquery</span>
+            <a href="">1.1该插件已经改名为Emmet</a>
+            <a href="">1.2该插件已经改名为Emmet</a>
+            <a href="">1.3该插件已经改名为Emmet</a>
+            <a href="">1.4该插件已经改名为Emmet</a>
+        </div>
+        <div class="has_children">
+            <span>第三章-认识jquery</span>
+            <a href="">1.1该插件已经改名为Emmet</a>
+            <a href="">1.2该插件已经改名为Emmet</a>
+            <a href="">1.3该插件已经改名为Emmet</a>
+            <a href="">1.4该插件已经改名为Emmet</a>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(".has_children").click(function(){
+        $(this).toggleClass('highlight');
+        if($(this).hasClass('highlight')){
+            $(this).children('a').show().end().siblings().children('a').hide();
+            if($(this).siblings().hasClass('highlight')){
+                $(this).siblings().removeClass('highlight');
+            }
+        }else{
+            $(this).children('a').hide().end()
+        }
+    })
+
+    var $children=$('.has_children');
+    console.log($children[0])
+    console.log($children.get(1))
+
+
+        // $('.highlight').click(function(){
+        //     console.log(1)
+        //     $(this).removeClass('highlight').children('a').hide();
+        // })
+
+</script>
