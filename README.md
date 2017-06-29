@@ -1,5 +1,5 @@
 https://jarforjs.github.io/ajax/
-
+# 第一章
 ## jQuery对象转成DOM对象
 > jQuery提供两种方法将一个jQuery对象转换成DOM对象,即[index]和get(index)
 
@@ -15,6 +15,7 @@ https://jarforjs.github.io/ajax/
 平常用到的jQuery对象都是通过$()函数制造出来的,$()函数就是一个jQuery对象的制造工厂
 ```
 
+# 第二章
 ## 过滤选择器可分为:
 > 基本过滤
 - :first、:last、:not(selector)、:even、:odd、:eq(index)等于,:gt(index)大于、:lt(index)小于、:header标题元素、:animated正在执行动画的所有元素(索引从0开始)
@@ -49,3 +50,16 @@ var $t_a = $('.test :hidden');带空格
 var $t_b = $('.test:hidden');不带空格
 选取隐藏的class为test的元素
 ```
+
+# 第三章
+## jQuery中的DOM操作
+> 插入节点
+- append(匹配元素内后置)、prepend(匹配元素内前置)、appendTo(将匹配元素内后置)、prependTo(将匹配元素内前置)、after(匹配元素后插入)、insertAfter(将匹配元素后插入)、before(匹配元素前插入)、insertBefore(将匹配元素前插入)
+> 删除节点
+- remove():这个方法返回一个指向已被删除的节点的引用,因此可以再以后再使用
+- empty():并不是删除节点而是清空元素中所有后代节点
+> 复制节点
+- clone():他有一个参数true,意味着复制元素的同时也复制元素中所绑事件
+> 替换节点
+- replaceWith():将
+- replaceAll()
