@@ -17,8 +17,14 @@ https://jarforjs.github.io/ajax/
 
 # 第二章
 ## 过滤选择器可分为:
-> 基本过滤
+> 基本选择器
+- #id、.class、element(标签)、*、selector1,selector2，selector3
 - :first、:last、:not(selector)、:even、:odd、:eq(index)等于,:gt(index)大于、:lt(index)小于、:header标题元素、:animated正在执行动画的所有元素(索引从0开始)
+> 层次选择器
+- $('ancestor descendant')后代
+- $('parent > child')子
+- $('prev + next')紧接在prev后的next元素
+- $('prev~siblings')
 > 内容过滤
 - :contains(text)、:empty(不含有子元素或者空文本)、:has(selector)、:parent
 > 可见性过滤
@@ -35,7 +41,7 @@ https://jarforjs.github.io/ajax/
 - :disabled
 - :checked
 - :selected
->> 表单选择器
+> 表单选择器
 - :input(所有\<input>、\<select>、\<textarea>、\<button>)
 ```
 注意:$('#form1 :input').length与$('#form1 input').length的区别.一个是所有,而后者不包括<select>、<textarea>、<button>只是input
