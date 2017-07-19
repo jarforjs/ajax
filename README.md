@@ -17,8 +17,16 @@ https://jarforjs.github.io/ajax/
 
 # 第二章
 ## 过滤选择器可分为:
-> 基本过滤
-- :first、:last、:not(selector)、:even、:odd、:eq(index)等于,:gt(index)大于、:lt(index)小于、:header标题元素、:animated正在执行动画的所有元素(索引index都是从0开始)、:focus选取当前获得焦点元素
+> 基本选择器
+- #id、.class、element(标签)、*、selector1,selector2，selector3
+> 层次选择器
+- $('ancestor descendant')后代
+- $('parent > child')子
+- $('prev + next')紧接在prev后的next元素
+- $('prev~siblings')
+> 基本过滤选择器
+- :first、:last、:not(selector)、:even、:odd、:eq(index)等于,:gt(index)大于、:lt(index)小于、:header标题元素、:animated正在执行动画的所有元素(索引从0开始)、:focus选取当前获得焦点元素
+>>>>>>> e9deee3266ec05b1b4e9a4ea4c94a4a446acf303
 > 内容过滤
 - :contains(text)、:empty(不含有子元素或者空文本)、:has(selector)、:parent
 > 可见性过滤
