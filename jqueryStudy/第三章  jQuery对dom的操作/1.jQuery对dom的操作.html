@@ -16,6 +16,7 @@
 	  <li title='橘子'>橘子</li>
 	  <li title='菠萝'>菠萝</li>
 	</ul>
+    <input type="text">
 </body>
 </html>
 <script>
@@ -30,5 +31,8 @@
     // $(A).appendTo(B)//后置
     // $(A).prependTo(B)//前置
 
-    
+    $('input').click(function(){
+        $(':focus').css('background','#bfa')
+
+    })
 </script>
