@@ -26,7 +26,6 @@ https://jarforjs.github.io/ajax/
 - $('prev~siblings')
 > 基本过滤选择器
 - :first、:last、:not(selector)、:even、:odd、:eq(index)等于,:gt(index)大于、:lt(index)小于、:header标题元素、:animated正在执行动画的所有元素(索引从0开始)、:focus选取当前获得焦点元素
->>>>>>> e9deee3266ec05b1b4e9a4ea4c94a4a446acf303
 > 内容过滤
 - :contains(text)、:empty(不含有子元素或者空文本)、:has(selector)、:parent
 > 可见性过滤
@@ -43,6 +42,8 @@ https://jarforjs.github.io/ajax/
 - :disabled
 - :checked(input:checked)
 - :selected(select option:selected)
+- var deptId =$('[name="deptId"] option:selected').val();
+- $('[name="trialName"]').val(trialCourt.find('option:selected').text());
 >> 表单选择器
 - :input(所有\<input>、\<select>、\<textarea>、\<button>)
 ```
