@@ -6,11 +6,20 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css" />
 <script src="../../scripts/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
+// $(function(){
+//     $("#panel h5.head").bind("mouseover",function(){
+// 	     $(this).next().show();
+// 	}).bind("mouseout",function(){
+// 	     $(this).next().hide();
+// 	})
+// })
+
+
 $(function(){
-    $("#panel h5.head").bind("mouseover",function(){
-	     $(this).next().show();
-	}).bind("mouseout",function(){
-	     $(this).next().hide();
+	$('#panel h5.head').bind('mouseover',function(){
+		$(this).next().show();
+	}).bind('mouseout',function(){
+		$(this).next().hide();
 	})
 })
 </script>

@@ -8,9 +8,9 @@
 <script type="text/javascript">
 $(function(){
     $("#panel h5.head").mouseover(function(){
-	    $(this).next().show();
+	    $(this).addClass('highlight').next().show();
 	}).mouseout(function(){
-	    $(this).next().hide();
+	    $(this).removeClass('highlight').next().hide();
 	})
 })
 </script>
