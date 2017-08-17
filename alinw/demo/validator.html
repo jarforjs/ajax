@@ -1,0 +1,28 @@
+<!-- 上传文件并验证demo -->
+<td>
+    <div class="kuma-form-item">
+        <input type="button"
+                class="fn-btn fn-btn-upload fn-btn-sm fn-W100 JS-need-upload"
+                value="选择图片"
+                data-style='{"display": "inline-block"}'
+                data-size="1"
+                data-rule="(\.jpg|\.jpeg|\.png|\.bmp)$"
+                data-accept="image/jpg, image/jpeg, image/png, image/bmp"
+                data-rule-err-msg="请上传后缀是jpg,jpeg,png,bmp的图片"
+            #foreach( $!licenseDo in $!licenseDoList )
+                #if($!licenseDo.businessType == 'MIN_TYPE_BUSINESS')
+                    #set($securitylIds = "$!{licenseDo.securityId}")
+                data-list='[{"id":"$!securitylIds", "name": "$!licenseDo.fileName", "url": "$!licenseDo.url"}]'
+                #end
+            #end
+                data-img-view="true"
+                data-input-name="fileBusiness" />
+        <input type="hidden"
+                name="fileBusiness"
+                class="JS-target-required"
+                data-skip-hidden="false"
+                data-required="true"
+                data-errormessage="请上传企业营业执照。"
+                value="$!securitylIds" />
+    </div>
+</td>
