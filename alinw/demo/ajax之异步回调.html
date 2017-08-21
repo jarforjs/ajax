@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <script>
+        //1.同步模式，即上述所说的单线程模式，一次只能执行一个任务，函数调用后需等到函数执行结束，返回执行的结果，才能进行下一个任务。如果这个任务执行的时间较长，就会导致「线程阻塞」。
+        var x = true;
+        //while(x);
+        console.log("don't carry out")//不会执行
+        //上面的例子即同步模式，其中的while是一个死循环，它会阻塞进程，因此第三句console不会执行。 
+        //同步模式比较简单，也较容易编写。但问题也显而易见，如果请求的时间较长，而阻塞了后面代码的执行，体验是很不好的。因此对于一些耗时的操作，异步模式则是更好的选择。
+
+        //2.异步模式，即与同步模式相反，可以一起执行多个任务，函数调用后不会立即返回执行的结果，如果任务A需要等待，可先执行任务B，等到任务A结果返回后再继续回调。 
+        //最常见的异步模式就数定时器了，我们来看看以下的例子。
+        setTimeout(function(){
+            console.log('taskA,asynchronous异步');
+        },0);
+        console.log('taskB,synchronize同步');
+        //while(true);
+        //我们可以看到，定时器延时的时间明明为0，但taskA还是晚于taskB执行。这是为什么呢？由于定时器是异步的，异步任务会在当前脚本的所有同步任务执行完才会执行。如果同步代码中含有死循环，即将上例的注释去掉，那么这个异步任务就不会执行，因为同步任务阻塞了进程。
+        
+    </script>
+</body>
+</html>
