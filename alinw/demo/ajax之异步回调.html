@@ -24,7 +24,11 @@
         console.log('taskB,synchronize同步');
         //while(true);
         //我们可以看到，定时器延时的时间明明为0，但taskA还是晚于taskB执行。这是为什么呢？由于定时器是异步的，异步任务会在当前脚本的所有同步任务执行完才会执行。如果同步代码中含有死循环，即将上例的注释去掉，那么这个异步任务就不会执行，因为同步任务阻塞了进程。
-        
+
+
+        //https://segmentfault.com/a/1190000007032448#articleHeader6
+        //http://www.cnblogs.com/lvdabao/p/es6-promise-1.html
+        //http://blog.csdn.net/aitangyong/article/category/2669337/2
     </script>
 </body>
 </html>
