@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../scripts/jquery.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <form>
+        <input value="Monday" id="ckMon" onclick="IsSelectAll()" type="checkbox" name="ckWeek"> 星期一
+        <input value="Tuesday" id="ckTues" onclick="IsSelectAll()" type="checkbox" name="ckWeek"> 星期二
+        <input value="Wednesday" id="ckWed" onclick="IsSelectAll()" type="checkbox" name="ckWeek"> 星期三
+        <input value="Thursday" id="ckThur" onclick="IsSelectAll()" type="checkbox" name="ckWeek"> 星期四
+        <input value="Friday" id="ckFri" onclick="IsSelectAll()" type="checkbox" name="ckWeek"> 星期五
+        <input value="Saturday" id="ckSat" onclick="IsSelectAll()" type="checkbox" name="ckWeek"> 星期六
+        <input value="Sunday" id="ckSun" onclick="IsSelectAll()" type="checkbox" name="ckWeek"> 星期日
+        <input value="CKALL" onclick="CheckAll(this)" id="ckAll" type="checkbox" name="ckAll">全选
+        <br>
+        <input type="text" id="txtCk">
+        <input value="获取" onclick="Get();" type="button" name="btnGet">
+    </form>
+    <p>
+        <strong>判断是否选中：</strong><input value="是否选中星期三" onclick="SelectWed()" type="button"><br>
+        方法一：if ($("#ckWed").get(0).checked) {}<br>
+        方法二：if ($("#ckWed").is(":checked")) {}<br>
+        方法三：if ($("#ckWed").attr("checked")) {}
+    </p>
+    <p>
+        <strong>获取选中值：</strong><input value="获取选中值" onclick="GetVal()" type="button"><br>
+            1.获取选中的Jquery对象：$("input[name='ckWeek']:checked");<br>
+            2.$("input[name='ckWeek']:checked").val()只会获得第一个选中的值。<br>
+            3.如果想获取第几个可以使用get：$("input[name='ckWeek']:checked").get(i).value;<br>
+            4.如果要想获取更多选中的值就要用到循环：for、each
+        <pre>
+            each:
+            $("input[name='ckWeek']:checked").each(function(){                                            
+                alert($(this).val()); 
+            });
+            for:
+            var ck=$("input[name='ckWeek']:checked")
+            for(var i=0;i<&lt;ck.length;i++){
+                if(ck[i].checked){
+                    alert(ck[i].value);
+                }
+            }
+        </pre>
+    </p>
+    <p>
+        <strong>全选和全不选：</strong>可以点击文章开头的全选复选框试验<br>
+        传入全选复选框的document对象，用于判断全选或者全不选。当Checked的时候就是全选，反之为全不选。
+        <pre>
+            function CheckAll(ck) {
+                var ckAll = $("input[name='ckWeek']");
+                for (var i = 0; i < ckAll.length; i++) {
+                    if (ckAll[i].type == "checkbox") {
+                        ckAll[i].checked = ck.checked;
+                    }
+                }
+            }
+        </pre>
+    </p>
+
+</body>
+<script type="text/javascript">// <![CDATA[
+    function IsSelectAll() {
+        if ($("#ckAll").attr("checked")) {
+            $("#ckAll")[0].checked = $("#ckAll").val() & 0;
+        }
+        else {
+            var ckNum = $("input[name='ckWeek']").length;
+            var ckTotal = $("input[name='ckWeek']:checked").length;
+            if (ckNum == ckTotal) {
+                $("#ckAll").attr("checked", "checked");
+            }
+        }
+    }
+
+    function SelectWed() {
+        if ($("#ckWed").attr("checked")) {
+            console.log("选中了星期三。");
+        }
+        else {
+            console.log("未选中星期三。");
+        }
+    }
+
+    function GetVal() {
+        if ($("input[name='ckWeek']:checked").length == 0) {
+            console.log("请选择要获取的值。");
+            return;
+        }
+        $("input[name='ckWeek']:checked").each(function () {
+            console.log($(this).val());
+        });
+    }
+
+    function CheckAll(ck) {
+        var ckAll = $("input[name='ckWeek']");
+        for (var i = 0; i < ckAll.length; i++) {
+            if (ckAll[i].type == "checkbox") {
+                ckAll[i].checked = ck.checked;
+            }
+        }
+    }
+
+    function Get() {
+        if ($("input[name='ckWeek']:checked").length == 0) {
+            $("#txtCk").val("");
+            console.log("请选择要获取的值。");
+            return;
+        }
+        var strVal = [];
+        //这里的each也可以用map
+        $("input[name='ckWeek']:checked").each(function () {
+            strVal.push($(this).val());
+        });
+        $("#txtCk").val(strVal);
+        console.log(strVal.length + "  " + strVal);
+    }
+// ]]>
+</script>
+</html>

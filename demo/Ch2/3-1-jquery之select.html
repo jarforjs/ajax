@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../scripts/jquery.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <form action="">
+    <p>前提：Select的Id为"selTest"</p>
+    <p>
+
+    </p>
+    <span style="color: #ff0000;">重置所有：</span><input value="重置Select" type="reset" onclick="Reset();">
+    <select name="" id="selTest" style="width:100px;height:30px">
+        <option value="">请选择季节</option>
+        <option value="spring">春天</option>
+        <option value="summer">夏天</option>
+        <option value="autumn">秋天</option>
+        <option value="winter">冬天</option>
+    </select><br>
+    <p>
+        <span style="color: #ff0000;">Select变更触发事件：</span><input value="增加Change事件" type="button" onclick="Change();"><br>
+        $("#selTest").change(function(){console.log("选中值变更,事件触发了。");});
+    </p>
+    <p>
+        <span style="color: #ff0000;">获取Select：</span><br>
+        <span>获取Select选中的text：</span><input value="获取选中text" type="button" onclick="GetText();"><br>
+        $("#selTest").find("option:selected").text();
+    </p>
+    <p>
+        <span>获取Select选中的val：</span><input value="获取选中val" type="button" onclick="GetVal();"><br>
+        $("#selTest").val();
+    </p>
+    <p>
+        <span>获取Select选中的index：</span><input value="获取选中index" type="button" onclick="GetIndex();"><br>
+        $("#selTest").get(0).selectedIndex();
+    </p>
+    <p>
+        <span style="color: #ff0000;">设置Select：</span><br>
+        <strong>
+            <span>备注：都是已知什么选中什么，如果已知项多了，选择的方法就有很多，这里就不一一列举了。</span>
+        </strong><br>
+        <span>设置Select选中的text：</span><input value="设置text为春天" type="button" onclick="SetText();"><br>
+        <pre>
+            var length=$("#selTest option").length;
+            for(var i=0;i&lt;length;i++)
+            {
+                if($("#selTest").get(0).options[i].text=="春天")
+                {
+                    $("#selTest").get(0).options[i].selected=true;
+                    break;
+                }
+            }
+        </pre>
+    </p>
+    <p>
+        <span>设置Select选中的val：</span><input value="选中val为summer" type="button" onclick="SetVal();"><br>
+        $("#selTest").val("summer");<br>
+        或者：$("#selTest").attr("value","summer");<br>
+        或者：$("#selTest").get(0).value="summer";
+    </p>
+    <p>
+        <span>设置Select选中的index：</span><input value="选中index为3" type="button" onclick="SetIndex();"><br>
+        $("#selTest").get(0).selectedIndex=3;
+    </p>
+</form>
+<!-- <div id="parent">  
+    <input type="button" id="a" value="1"></input>  
+    <input type="button" id="b" value="2"></input>  
+    <input type="button" id="c" value="3"></input>  
+</div> -->
+<input type="button" id="test" value="test">  
+<div id="parent">  
+    <input type="button" id="a" value="1"></input>  
+    <input type="button" id="b" value="2"></input>  
+    <input type="button" id="c" value="3"></input>  
+</div>
+
+<div id="parent1">  
+    <input type="button" value="a" id="a"/>  
+    <input type="button" value="b" id="b"/>  
+</div>
+</body>
+<script type="text/javascript">// <![CDATA[
+
+    // $("#parent1").bind("click",function(){
+    //     console.log('haah');
+    // })
+    $("#parent1").on("click","#a",function(){
+        console.log('haah');
+    })
+    var selObj = $("#selTest");
+    function Reset() {
+        selObj.unbind("change");
+        selObj.load(window.location, "#selTest option");
+        //selObj[0].selectedIndex = 0;
+        // selObj.get(0).selectedIndex = 0;
+        $("select").trigger('change');
+    }
+
+    function Change() {
+        selObj.unbind("change");
+        selObj.bind("change", function () { console.log("选中值变更,事件触发了。"); });
+    }
+
+    function GetText() {
+        console.log(selObj.find("option:selected").text());
+    }
+
+    function GetVal() {
+        console.log(selObj.val());
+    }
+
+    function GetIndex() {
+        console.log(selObj.get(0).selectedIndex);
+    }
+
+    function SetText() {
+        var length = $("#selTest option").length;
+        for (var i = 0; i < length; i++) {
+            if (selObj.get(0).options[i].text == "春天") {
+                selObj.get(0).options[i].selected = true;
+                break;
+            }
+        }
+    }
+
+    function SetVal() {
+        selObj.val("summer");
+    }
+
+    function SetIndex() {
+        selObj.get(0).selectedIndex = 3;
+    }
+
+//那么delegate()是怎么做到的呢？很简单，利用javascript中的事件冒泡机制。当子元素产生1个事件的时候，如果没有禁止这个事件的传播，那么父元素也会感知到这个事件(父元素上的事件处理函数被调用)。而且通过Event对象，能够拿到最初触发事件的元素。下面的代码，我们自己实现了1个简易的事件委托机制。
+    $(function () {
+        $("#parent").click(":button", function (event) {
+            // target是最初触发事件的DOM元素。  
+            var domId = event.target.id;
+            // 过滤元素  
+            var filter = event.data;
+            if ($(event.target).is(filter)) {
+                console.log(domId);
+            }
+        });
+    })
+
+    // $(function(){  
+    //     $("#parent").delegate(":button","click",function(event){
+    //         alert($(this).attr("id"));
+    //     });
+    //     $("#test").click(function(event){  
+    //         $("#parent").append('<input type="button" id="d" value="4"></input>');  
+    //     });  
+    // })
+// ]]>
+</script>
+</html>
